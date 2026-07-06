@@ -53,6 +53,25 @@ class AddressBook {
 
         contact.displayContact();
     }
+
+    //edit Contact
+
+    public void editContact(String firstname, Contact1 contact, Scanner sc){
+        if(contact.firstName.equalsIgnoreCase(firstname)){
+            System.out.print("Contact found");
+            contact.address=sc.nextLine();
+            contact.city=sc.nextLine();
+            contact.state=sc.nextLine();
+            contact.zip=sc.nextInt();
+            contact.phoneNumber=sc.nextLong();
+            sc.nextLine();
+            String email=sc.nextLine();
+            System.out.println("Updates Details are: ");
+            contact.displayContact();;
+        }else{
+            System.out.print("Contact not found");
+        }
+    }
 }
 
 
@@ -95,9 +114,12 @@ public class AddressBookUC2 {
 
         // Create AddressBook Object
         AddressBook addressBook = new AddressBook();
-
-        // Add Contact
         addressBook.addContact(contact);
+
+        System.out.println("Enter the first name to edit the contact: ");
+        String name =sc.nextLine();
+        addressBook.editContact(name,contact,sc);
+        // Add Contact
 
         sc.close();
     }
